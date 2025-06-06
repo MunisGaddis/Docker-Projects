@@ -1,0 +1,38 @@
+
+Simple Java Project
+
+git clone https://github.com/LondheShubham153/simple-java-docker.git
+
+cd simple-java-docker
+
+Remove Dockerfile
+rm -v Dockerfile
+
+Create Dockerfile
+
+nano Dockerfile
+
+# OS with env (Base Image)
+FROM openjdk:17-jdk-alpine
+
+# Working Directory
+WORKDIR /app
+
+# Source Code 
+COPY src/Main.java /app/Main.java
+
+# Libraries
+RUN javac Main.java
+
+# Run
+CMD ["java","Main]
+
+Build the app
+docker build -t java-app .
+
+Run the app
+docker run java-app
+
+docker stop containerID
+docker rm containerID
+docker rmi imageID
