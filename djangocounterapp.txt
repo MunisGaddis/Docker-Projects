@@ -1,0 +1,49 @@
+Django Counter-App
+
+git clone https://github.com/deparkes/simple-django-app.git
+
+cd simple-django-app
+
+Create requiremets.txt
+
+nano requirements.txt
+add django
+
+Create Dockerfile
+
+nano Dockerfile
+
+# Base Image
+FROM python:3.7
+
+# Working Directory
+WORKDIR /app
+
+# Code 
+COPY . /app
+
+# Install Libraries
+RUN pip install -r requirements.txt
+
+# Migrations
+RUN python cool_counters/manage.py migrate
+
+# RUN App
+CMD ["python","cool_counters/manage.py","runserver","0.0.0.0:8000"]
+
+Build the app
+docker build -t counter-app .
+
+Run the app
+docker run -d -p 8000:8000 counter-app:latest
+
+To check logs
+docker logs ContainerID
+
+cd counter then setting.py add ["*"] in allowed list
+
+Now build and run docker again
+
+docker stop containerID
+docker rm containerID
+docker rmi imageID
