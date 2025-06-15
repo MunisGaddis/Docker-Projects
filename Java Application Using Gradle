@@ -1,0 +1,14 @@
+To build a Java application with Gradle, you need the following installed on your system.
+
+Java JDK
+Gradle
+
+git clone https://github.com/techiescamp/java-app.git
+cd java-app
+gradle bootRun
+gradle build
+java -jar build/libs/spring-boot-1.0.0-SNAPSHOT.jar
+
+You can add the symbol & at the end of the above command to run the application in the background.
+
+Once, it starts running you can access the application on the web using the URL http://localhost:8080
