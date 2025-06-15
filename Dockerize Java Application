@@ -2,6 +2,10 @@ git clone https://github.com/techiescamp/java-spring-petclinic
 
 cd java-spring-petclinic
 
+Install maven
+
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+
 Using Distroless Java Base Image
 # Use the distroless Java base image
 FROM gcr.io/distroless/java17-debian12
