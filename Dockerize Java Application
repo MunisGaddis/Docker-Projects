@@ -1,0 +1,46 @@
+git clone https://github.com/techiescamp/java-spring-petclinic
+
+cd java-spring-petclinic
+
+Using Distroless Java Base Image
+# Use the distroless Java base image
+FROM gcr.io/distroless/java17-debian12
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the JAR file into the container at /app
+COPY target/*.jar java.jar
+
+# Expose the port your app runs on
+EXPOSE 8080
+
+# Run the jar file
+CMD ["java.jar"]
+***************************************************************
+Using Docker Multistage Build for Java application
+FROM techiescamp/jdk-17:1.0.0 AS build
+
+# Copy the Java Application source code
+COPY . /usr/src/
+
+# Build Java Application
+RUN mvn -f /usr/src/pom.xml clean install -DskipTests
+
+FROM techiescamp/jre-17:1.0.0
+WORKDIR /app
+
+# Copy the JAR file from the build stage (/app)
+COPY --from=build /usr/src/target/*.jar ./java.jar
+
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Run the jar file
+CMD ["java", "-jar", "java.jar"]
+*****************************************************************
+mvn clean install -Dmaven.test.skip=true
+
+docker build -t java-application:1.0.0 .
+
+docker run -d -p 8080:8080 java-application:1.0.0
