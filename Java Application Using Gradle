@@ -5,6 +5,10 @@ Gradle 8+
 
 git clone https://github.com/techiescamp/java-app.git
 cd java-app
+
+The gradle bootRun command is used to run a Spring Boot application directly from the command line using Gradle, 
+without needing to build a full JAR or WAR first.
+
 gradle bootRun
 
 # 1. Build the project
