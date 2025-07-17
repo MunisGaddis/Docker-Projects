@@ -1,13 +1,17 @@
 To build a Java application with Gradle, you need the following installed on your system.
 
-Java JDK
-Gradle
+Java JDK 21
+Gradle 8+
 
 git clone https://github.com/techiescamp/java-app.git
 cd java-app
 gradle bootRun
+
+# 1. Build the project
 gradle build
-java -jar build/libs/spring-boot-1.0.0-SNAPSHOT.jar
+
+# 2. Run the built application
+java -jar build/libs/spring-boot-1.0.0-SNAPSHOT.jar &
 
 You can add the symbol & at the end of the above command to run the application in the background.
 
