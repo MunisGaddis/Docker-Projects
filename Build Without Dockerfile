@@ -1,0 +1,53 @@
+Build images without Dockerfile
+
+Deploy NodeJS application using Cloud Native Builpacks
+
+Pre-requisites:
+AWS account
+An Ubuntu EC2 machine t2.micro (t2.micro is ok, if you are using simple application)
+Docker installed
+
+Steps:
+Update your machine
+sudo apt update
+
+Install docker
+sudo apt install docker.io -y
+
+Provide permission to ubuntu user to docker group
+sudo usermod -aG docker $USER && newgrp docker
+
+Install pack utility to build image
+sudo add-apt-repository ppa:cncf-buildpacks/pack-cli
+sudo apt-get update
+sudo apt-get install pack-cli
+
+Clone your code
+git clone https://github.com/DevMadhup/node-todo-cicd.git
+
+Go inside the directory----cd node-todo-cicd
+Remove Dockerfile and docker-compose file to make sure we are not using it for building the image.
+rm -rv Dockerfile
+rm -rv docker-compose.yaml
+
+Run the following command to get the pack builder
+pack build suggest
+Copy the google builder and paste in the below command
+pack build --builder=<your-builder-from-above-command> node-app
+
+pack build --builder=gcr.io/buildpacks/builder:google-22 notes-app
+
+After build, check images
+docker images
+
+Run the image as a container
+docker run -d -p 8000:8000 notes-app:latest
+
+Note
+This application runs on port 8000, that's why we mentioned 8000 in the above command
+
+Open port 8000 from the security groups and access your application
+
+http://<public-ip>:8000
+
+Congratulations!!! you have deployed and application using Cloud Native Buildpacks.
