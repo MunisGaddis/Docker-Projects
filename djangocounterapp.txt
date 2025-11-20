@@ -12,7 +12,7 @@ add django
 Create Dockerfile
 
 nano Dockerfile
-
+*********************************************************************************
 # Base Image
 FROM python:3.7
 
@@ -30,7 +30,7 @@ RUN python cool_counters/manage.py migrate
 
 # RUN App
 CMD ["python","cool_counters/manage.py","runserver","0.0.0.0:8000"]
-
+*********************************************************************************
 Build the app
 docker build -t counter-app .
 
