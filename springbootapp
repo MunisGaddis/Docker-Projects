@@ -23,7 +23,6 @@ COPY --from=builder /app/target/*.jar app/target/bankapp.jar
 EXPOSE 8080
 CMD ["java", "-jar", "app/target/bankapp.jar"]
 
-
 *******************************************************************************************
 docker build -t bankapp-mini .
 docker run -d --name mysql -e MYSQL_DATABASE=bankappdb -e MYSQL_ROOT_PASSWORD=Test@123 mysql
