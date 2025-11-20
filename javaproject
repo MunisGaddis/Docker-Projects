@@ -11,7 +11,7 @@ rm -v Dockerfile
 Create Dockerfile
 
 nano Dockerfile
-
+*******************************************************************
 # OS with env (Base Image)
 FROM openjdk:17-jdk-alpine
 
@@ -26,7 +26,7 @@ RUN javac Main.java
 
 # Run
 CMD ["java","Main]
-
+********************************************************************
 Build the app
 docker build -t java-app .
 
